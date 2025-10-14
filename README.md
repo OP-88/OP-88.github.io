@@ -694,8 +694,8 @@
                 <div class="terminal-line contact-matrix">
                     <a href="mailto:markmunene827@gmail.com" class="contact-link">EMAIL</a>
                     <a href="tel:+254741886442" class="contact-link">CALL</a>
-                    <a href="https://linkedin.com" target="_blank" class="contact-link">LINKEDIN</a>
-                    <a href="https://github.com/OP-88" target="_blank" class="contact-link">GITHUB</a>
+                    <a href="https://www.linkedin.com/in/mark-munene-m" target="_blank" class="contact-link">LINKEDIN</a>
+                    <a href="https://github.com/OP-88/OP_88" target="_blank" class="contact-link">GITHUB</a>
                 </div>
             </div>
         </div>
