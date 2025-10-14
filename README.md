@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark M. Munyiri - Developer Portfolio</title>
+    <title>Mark .M. Munyiri - Developer Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -682,7 +682,7 @@
                     <span class="prompt">$</span> whoami
                 </div>
                 <div class="terminal-line">
-                    <span class="name-gradient glitch" data-text="MARK M. MUNYIRI">MARK M. MUNYIRI</span>
+                    <span class="name-gradient glitch" data-text="MARK .M. MUNYIRI">MARK .M. MUNYIRI</span>
                 </div>
                 <div class="terminal-line">
                     <span class="prompt">$</span> cat role.txt
@@ -693,8 +693,8 @@
                 <div class="terminal-line contact-matrix">
                     <a href="mailto:markmunene827@gmail.com" class="contact-link">EMAIL</a>
                     <a href="tel:+254741886442" class="contact-link">CALL</a>
-                    <a href="https://linkedin.com" target="_blank" class="contact-link">LINKEDIN</a>
-                    <a href="https://github.com/OP-88" target="_blank" class="contact-link">GITHUB</a>
+                    <a href="https://www.linkedin.com/in/mark-munene-m" target="_blank" class="contact-link">LINKEDIN</a>
+                    <a href="https://github.com/OP-88/OP_88" target="_blank" class="contact-link">GITHUB</a>
                 </div>
             </div>
         </div>
@@ -826,7 +826,7 @@
         <div class="container">
             <p class="footer-text">⚡ AVAILABLE FOR OPPORTUNITIES ⚡</p>
             <p style="font-size: 1.1em; color: #8b949e;">Full Stack Developer | Cybersecurity Enthusiast</p>
-            <p style="margin-top: 20px; color: #00ff41;">© 2025 Mark M. Munyiri - Securing the Digital Future</p>
+            <p style="margin-top: 20px; color: #00ff41;">© 2025 Mark .M. Munyiri - Securing the Digital Future</p>
         </div>
     </footer>
 
