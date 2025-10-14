@@ -683,7 +683,7 @@
                     <span class="prompt">$</span> whoami
                 </div>
                 <div class="terminal-line">
-                    <span class="name-gradient glitch" data-text="MARK M. MUNYIRI">MARK M. MUNYIRI</span>
+                    <span class="name-gradient glitch" data-text="MARK .M. MUNYIRI">MARK .M. MUNYIRI</span>
                 </div>
                 <div class="terminal-line">
                     <span class="prompt">$</span> cat role.txt
@@ -827,7 +827,7 @@
         <div class="container">
             <p class="footer-text">⚡ AVAILABLE FOR OPPORTUNITIES ⚡</p>
             <p style="font-size: 1.1em; color: #8b949e;">Full Stack Developer | Cybersecurity Enthusiast</p>
-            <p style="margin-top: 20px; color: #00ff41;">© 2025 Mark M. Munyiri - Securing the Digital Future</p>
+            <p style="margin-top: 20px; color: #00ff41;">© 2025 Mark .M. Munyiri - Securing the Digital Future</p>
         </div>
     </footer>
 
