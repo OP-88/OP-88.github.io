@@ -520,23 +520,100 @@
                 transform: translateX(50%);
                 width: 90%;
                 justify-content: center;
+                padding: 12px 20px;
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 0.8em;
             }
 
             .hero-content {
                 padding: 0 20px;
             }
 
+            .hero-title {
+                font-size: 2rem !important;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem !important;
+            }
+
+            .hero-bio {
+                font-size: 0.95rem;
+            }
+
             .cta-buttons {
                 flex-direction: column;
+                gap: 15px;
+            }
+
+            .section {
+                padding: 80px 20px;
+            }
+
+            .section-title {
+                font-size: 2rem !important;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .project-card {
+                padding: 30px;
+            }
+
+            .terminal-section {
+                padding: 60px 20px;
             }
 
             .terminal-content {
                 min-height: 300px;
                 padding: 20px;
+                font-size: 0.9rem;
+            }
+
+            .skills-container {
+                padding: 30px 20px;
+            }
+
+            .skill-item {
+                font-size: 0.9em;
+                padding: 10px 20px;
+            }
+
+            footer h2 {
+                font-size: 1.8rem !important;
+            }
+
+            footer p {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem !important;
+            }
+
+            .project-icon {
+                font-size: 2.5rem;
+            }
+
+            .project-title {
+                font-size: 1.5rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            footer h2 {
+                font-size: 1.5rem !important;
             }
         }
     </style>
@@ -820,11 +897,8 @@
             </a>
         </div>
 
-        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 5px;">
-            Or as I like it | Security Architect & Systems Engineer
-        </p>
-        <p style="color: #555; font-size: 0.85rem;">
-            (I have a very bad sense of humor)
+        <p style="color: #555; font-size: 0.85rem; margin-top: 40px;">
+            © 2025 Mark M. Munyiri. All rights reserved.
         </p>
     </footer>
 
