@@ -713,25 +713,25 @@
 
             <div class="project-card">
                 <div class="project-icon" style="color: #ff5f57;">🦀</div>
-                <h3 class="project-title">RUST TRAFFIC INSPECTOR</h3>
-                <p class="project-subtitle">User-Space Network Packet Filter</p>
+                <h3 class="project-title">RUST AD BLOCKER</h3>
+                <p class="project-subtitle">User-Space Network Ad Filter</p>
                 <p class="project-description">
-                    Engineered user-space network traffic filter from first principles, bypassing kernel requirements
-                    through Layer 7 architecture.
-                    Manually captured raw TCP byte streams into 1024-byte stack buffer with zero-dependency HTTP
-                    parsing,
-                    proving security controls don't require root access with deep protocol understanding.
+                    Built a real-time ad blocker from scratch in Rust without using any external libraries. Bypassed
+                    kernel/root requirements by engineering a Layer 7 proxy that intercepts HTTP traffic in user space.
+                    Manually captures raw TCP streams, parses HTTP requests, detects ad signatures (like "banner", "ad",
+                    "tracker"), and injects instant 403 Forbidden responses to block ads before they load.
                 </p>
                 <div class="tech-tags">
                     <span class="tech-tag">Rust</span>
                     <span class="tech-tag">TCP/IP</span>
-                    <span class="tech-tag">Systems Programming</span>
+                    <span class="tech-tag">HTTP Parsing</span>
+                    <span class="tech-tag">Ad Blocking</span>
                     <span class="tech-tag">std::net</span>
                 </div>
                 <div class="project-status">
                     ✓ Zero Dependencies<br>
-                    ✓ User-Space Filtering<br>
-                    ✓ Sub-Millisecond Latency<br>
+                    ✓ Real-Time Ad Detection<br>
+                    ✓ No Root Access Required<br>
                     >> STATUS: OPEN SOURCE
                 </div>
             </div>
