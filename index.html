@@ -676,7 +676,8 @@
                 </div>
                 <div class="output">$ cat arsenal.txt</div>
                 <div class="output" style="color: #fff;">
-                    Rust Python Docker Neo4j FastAPI PostgreSQL React Linux Redis DevSecOps MITRE-ATT&CK
+                    Python React/TypeScript FastAPI Docker PostgreSQL Neo4j Redis Linux DevSecOps Git Container-Security
+                    MITRE-ATT&CK Network-Protocols Offensive-Security Rust Bash
                 </div>
                 <div class="input-line">
                     <span class="prompt">root@sentinyl:~#</span>
@@ -921,7 +922,7 @@
 
                 switch (cmd) {
                     case 'help':
-                        response = "Available commands:\n  whoami    - Display profile\n  ls        - List projects\n  cat [arg] - View details\n  clear     - Clear terminal";
+                        response = "Available commands:\n  whoami    - Display profile\n  ls        - List projects\n  cat [arg] - View details\n  clear     - Clear terminal\n\n<span style='color: var(--primary)'>Hidden Commands (try these!):</span>\n  hack      - Initiate security scan\n  matrix    - Enter the Matrix\n  game      - Play a guessing game\n  quote     - Random security quote\n  resume    - Download resume\n  brew      - Make coffee ☕";
                         break;
                     case 'whoami':
                         response = "Mark M. Munyiri\nSecurity Architect & Systems Engineer\nSpecialization: Hardened Infrastructure, Low-Level Security, DevSecOps";
@@ -939,6 +940,40 @@
                     case 'cat arsenal.txt':
                         document.getElementById('arsenal').scrollIntoView({ behavior: 'smooth' });
                         response = "Navigating to Arsenal...";
+                        break;
+                    case 'hack':
+                        response = "<span style='color: #ff006e'>[INITIALIZING SECURITY SCAN...]</span>\n<span style='color: var(--secondary)'>Scanning ports... ████████████ 100%\nAnalyzing vulnerabilities... COMPLETE\nMITRE ATT&CK mapping... DONE</span>\n\n<span style='color: var(--primary)'>✓ System Status: HARDENED</span>\n<span style='color: var(--primary)'>✓ Attack Surface: MINIMIZED</span>\n<span style='color: var(--primary)'>✓ Defense Posture: EXCELLENT</span>";
+                        break;
+                    case 'matrix':
+                        response = "<span style='color: var(--primary)'>Wake up, Neo...</span>\n<span style='color: #fff'>The Matrix has you.</span>\n<span style='color: var(--primary)'>Follow the white rabbit. 🐰</span>\n\n<span style='color: var(--secondary)'>01001000 01100001 01100011 01101011 00100000 01110100 01101000 01100101 00100000 01110000 01101100 01100001 01101110 01100101 01110100</span>";
+                        break;
+                    case 'game':
+                        const secretNum = Math.floor(Math.random() * 10) + 1;
+                        response = "<span style='color: var(--secondary)'>🎮 GUESS THE NUMBER!</span>\nI'm thinking of a number between 1-10.\n<span style='color: var(--primary)'>Hint: It's between 1 and 10 😉</span>\n\n<span style='color: #fff'>The answer was: " + secretNum + "</span>\n<span style='color: var(--primary)'>Better luck next time! Type 'game' to play again.</span>";
+                        break;
+                    case 'quote':
+                        const quotes = [
+                            "Security is not a product, but a process. - Bruce Schneier",
+                            "The only truly secure system is one that is powered off. - Gene Spafford",
+                            "Passwords are like underwear: don't share them, change them often. - Unknown",
+                            "Defense in depth: Because one layer is never enough.",
+                            "There are only two types of companies: those that have been hacked, and those that will be.",
+                            "The best way to predict the future is to invent it. - Alan Kay",
+                            "Code without tests is broken by design. - Jacob Kaplan-Moss"
+                        ];
+                        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+                        response = "<span style='color: var(--secondary)'>💭 Security Wisdom:</span>\n<span style='color: #fff'>" + randomQuote + "</span>";
+                        break;
+                    case 'resume':
+                        response = "<span style='color: var(--primary)'>📄 Resume Download</span>\n<span style='color: var(--secondary)'>Visit my LinkedIn for full resume:</span>\n<a href='https://www.linkedin.com/in/mark-munene-m' target='_blank' style='color: var(--primary)'>linkedin.com/in/mark-munene-m</a>";
+                        break;
+                    case 'brew':
+                    case 'brew coffee':
+                        response = "<span style='color: var(--secondary)'>☕ Brewing coffee...</span>\n<span style='color: #fff'>[ ████████████████ ] 100%</span>\n\n<span style='color: var(--primary)'>✓ Your coffee is ready!</span>\n<span style='color: var(--text-secondary)'>Warning: May cause increased productivity and late-night coding sessions.</span>";
+                        break;
+                    case 'sudo':
+                    case 'sudo su':
+                        response = "<span style='color: #ff006e'>Nice try! But you're already root 😎</span>";
                         break;
                     case 'clear':
                         document.querySelectorAll('#terminal-output > div:not(.input-line)').forEach(el => el.remove());
