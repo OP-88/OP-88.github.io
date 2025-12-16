@@ -551,6 +551,7 @@
 
     <nav>
         <a href="#home">TERMINAL</a>
+        <a href="#experience">EXPERIENCE</a>
         <a href="#projects">PROJECTS</a>
         <a href="#arsenal">ARSENAL</a>
     </nav>
@@ -608,16 +609,87 @@
         </div>
     </section>
 
-    <section id="projects" class="section">
-        <h2 class="section-title">MISSION LOGS</h2>
+    <section id="experience" class="section">
+        <h2 class="section-title">EXPERIENCE & TRAINING</h2>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-icon">🎓</div>
+                <h3 class="project-title">ZETECH UNIVERSITY</h3>
+                <p class="project-subtitle">Diploma in Software Engineering | 2022 - 2023</p>
+                <p class="project-description">
+                    Foundation in software architecture, full-stack development, and SDLC. Learned to build production
+                    systems, not just write code.
+                    Major project: Verba real-time audio transcription platform with WebSocket streaming achieving
+                    sub-100ms latency.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">WebSockets</span>
+                    <span class="tech-tag">Full Stack</span>
+                    <span class="tech-tag">SDLC</span>
+                </div>
+                <div class="project-status">
+                    >> LEARNED: Software architecture, async data flow, real-time systems
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="color: #ff006e;">⚔️</div>
+                <h3 class="project-title">CYBERSHUJAA</h3>
+                <p class="project-subtitle">Security Analyst | 2023 - 2024</p>
+                <p class="project-description">
+                    Transitioned from building systems to breaking them. Conducted active network exploitation: ARP
+                    spoofing, Man-in-the-Middle attacks, deep packet inspection with tcpdump.
+                    Moved from passive scanning to offensive operations, learning that you can't secure what you don't
+                    understand at the protocol level.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">ettercap</span>
+                    <span class="tech-tag">tcpdump</span>
+                    <span class="tech-tag">Wireshark</span>
+                    <span class="tech-tag">ARP Spoofing</span>
+                    <span class="tech-tag">Network Forensics</span>
+                </div>
+                <div class="project-status">
+                    >> LEARNED: Offensive security, how systems break, red team thinking
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon" style="color: #00d4ff;">🤖</div>
+                <h3 class="project-title">MORINGA SCHOOL</h3>
+                <p class="project-subtitle">AI Practitioner Certification | 2025</p>
+                <p class="project-description">
+                    Specialized in Machine Learning pipelines and Data Engineering. Learned to treat security as a data
+                    problem: apply ML to threat detection, use predictive models for risk analysis, build automated
+                    classification systems.
+                    Not about using ChatGPT—about understanding the math and pipelines behind intelligent systems.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">Data Pipelines</span>
+                    <span class="tech-tag">MLOps</span>
+                    <span class="tech-tag">Predictive Analytics</span>
+                </div>
+                <div class="project-status">
+                    >> LEARNED: ML pipelines, data engineering, automated threat classification
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section" style="background: rgba(0, 0, 0, 0.2);">
+        <h2 class="section-title">PROJECTS</h2>
 
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-icon">🛡️</div>
                 <h3 class="project-title">SENTINYL ENTERPRISE</h3>
-                <p class="project-subtitle">Lead Security Architect | Zero-Liability DRP SaaS</p>
+                <p class="project-subtitle">Zero-Liability Digital Risk Protection SaaS</p>
                 <p class="project-description">
-                    Architected an enterprise-grade microservices platform with defense-in-depth security achieving 75%
+                    Architected enterprise-grade microservices platform with defense-in-depth security achieving 75%
                     attack surface reduction.
                     Built Neo4j-powered graph database to map complex threat relationships, risk scoring engine with
                     MITRE ATT&CK integration,
@@ -642,9 +714,9 @@
             <div class="project-card">
                 <div class="project-icon" style="color: #ff5f57;">🦀</div>
                 <h3 class="project-title">RUST TRAFFIC INSPECTOR</h3>
-                <p class="project-subtitle">Systems Engineer | Low-Level Network Security</p>
+                <p class="project-subtitle">User-Space Network Packet Filter</p>
                 <p class="project-description">
-                    Engineered a user-space network traffic filter from first principles, bypassing kernel requirements
+                    Engineered user-space network traffic filter from first principles, bypassing kernel requirements
                     through Layer 7 architecture.
                     Manually captured raw TCP byte streams into 1024-byte stack buffer with zero-dependency HTTP
                     parsing,
@@ -665,35 +737,9 @@
             </div>
 
             <div class="project-card">
-                <div class="project-icon" style="color: #ff006e;">⚔️</div>
-                <h3 class="project-title">OFFENSIVE SECURITY OPS</h3>
-                <p class="project-subtitle">Security Analyst | Cybershujaa</p>
-                <p class="project-description">
-                    Conducted active network exploitation and penetration testing, moving from passive scanning to
-                    hands-on offensive operations.
-                    Executed successful MitM attacks using ARP spoofing, performed deep packet inspection with tcpdump,
-                    and validated that local network trust is a critical vulnerability requiring defense-in-depth
-                    architecture.
-                </p>
-                <div class="tech-tags">
-                    <span class="tech-tag">ettercap</span>
-                    <span class="tech-tag">tcpdump</span>
-                    <span class="tech-tag">Wireshark</span>
-                    <span class="tech-tag">ARP Spoofing</span>
-                    <span class="tech-tag">Network Forensics</span>
-                </div>
-                <div class="project-status">
-                    ✓ Man-in-the-Middle Attacks<br>
-                    ✓ Network Packet Analysis<br>
-                    ✓ Red Team Operations<br>
-                    >> IMPACT: Learned how systems break at protocol level
-                </div>
-            </div>
-
-            <div class="project-card">
                 <div class="project-icon" style="color: #00d4ff;">🎤</div>
                 <h3 class="project-title">VERBA</h3>
-                <p class="project-subtitle">Full Stack Engineer | Zetech University</p>
+                <p class="project-subtitle">Real-Time Audio Transcription Platform</p>
                 <p class="project-description">
                     Architected WebSocket streaming pipeline for real-time audio transcription, solving the latency
                     problem inherent in REST APIs.
