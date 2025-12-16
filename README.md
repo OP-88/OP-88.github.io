@@ -1,390 +1,831 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>root@sentinyl:~</title>
+    <title>OP-88 | Security Engineer</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        :root {
+            --primary: #00ff88;
+            --secondary: #00d4ff;
+            --accent: #ff006e;
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(20, 20, 30, 0.7);
+            --text-primary: #e6edf3;
+            --text-secondary: #8b95a3;
+            --border-glow: rgba(0, 255, 136, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: #e6edf3;
-            background: #0d0d0d; /* Darker background for contrast */
             overflow-x: hidden;
         }
 
-        /* --- BACKGROUND FX --- */
-        #matrix-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; opacity: 0.15; /* Lowered opacity for readability */
-        }
-        
-        .cyber-grid {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+        /* ===== ANIMATED GRADIENT BACKGROUND ===== */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
-            animation: gridMove 20s linear infinite;
-        }
-        
-        @keyframes gridMove {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 50%, #0a0a0f 100%);
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
-
-        /* --- BOOT SEQUENCE OVERLAY --- */
-        #boot-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000;
-            color: #00ff41;
-            z-index: 9999;
-            padding: 40px;
-            font-family: 'Courier New', monospace;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-        .log-entry { margin-bottom: 5px; }
-        .hidden { display: none !important; }
-
-        /* --- TERMINAL HEADER (INTERACTIVE) --- */
-        header { min-height: 90vh; display: flex; align-items: center; justify-content: center; }
-
-        .terminal-window {
-            background: rgba(13, 17, 23, 0.95);
-            border: 1px solid #00ff41;
-            border-radius: 8px;
-            width: 100%; max-width: 900px;
-            box-shadow: 0 0 40px rgba(0, 255, 65, 0.15);
-            overflow: hidden;
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            animation: float 20s ease-in-out infinite;
         }
 
-        .terminal-header {
-            background: #1a1a1a;
-            padding: 10px 15px;
-            display: flex; align-items: center; gap: 8px;
-            border-bottom: 1px solid #333;
-        }
-        .terminal-btn { width: 12px; height: 12px; border-radius: 50%; }
-        .btn-r { background: #ff5f56; } .btn-y { background: #ffbd2e; } .btn-g { background: #27c93f; }
-
-        .terminal-content { padding: 30px; font-size: 1.1em; min-height: 400px; }
-        
-        .prompt { color: #00ff41; margin-right: 10px; font-weight: bold; }
-        .command-output { color: #e6edf3; margin-bottom: 20px; white-space: pre-wrap; }
-        .input-line { display: flex; align-items: center; }
-        
-        input#cmd-input {
-            background: transparent; border: none; color: #fff;
-            font-family: inherit; font-size: inherit; width: 100%; outline: none;
+        .orb-1 {
+            top: 10%;
+            left: 20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            animation-delay: 0s;
         }
 
-        .glitch { position: relative; display: inline-block; font-weight: bold; }
-        
-        /* --- SECTIONS & CARDS --- */
-        section { padding: 100px 0; }
-        .section-title { font-size: 2.5em; margin-bottom: 50px; border-bottom: 2px solid #00ff41; display: inline-block; }
+        .orb-2 {
+            top: 60%;
+            right: 10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+            animation-delay: 5s;
+        }
 
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .orb-3 {
+            bottom: 10%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            animation-delay: 10s;
+        }
 
-        .card-3d {
-            background: rgba(20, 20, 20, 0.8);
-            border: 1px solid #333;
-            border-left: 3px solid #00ff41;
-            padding: 30px;
-            border-radius: 10px;
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-50px, 50px) scale(0.9);
+            }
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 0;
+            backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(10, 10, 15, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
             transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .glitch-text {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
             position: relative;
             overflow: hidden;
         }
-        .card-3d:hover {
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.5);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ===== TERMINAL SECTION ===== */
+        .terminal-section {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .terminal-window {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px var(--border-glow);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .terminal-window:hover {
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px var(--border-glow);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.1);
-            border-color: #00ff41;
         }
 
-        .tech-badge {
+        .terminal-header {
+            background: rgba(30, 30, 40, 0.9);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ff5f57;
+        }
+
+        .dot-yellow {
+            background: #ffbd2e;
+        }
+
+        .dot-green {
+            background: #28ca42;
+        }
+
+        .terminal-content {
+            padding: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .prompt {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .output {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .section {
+            padding: 120px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 60px;
+            font-weight: 700;
+            position: relative;
             display: inline-block;
-            padding: 4px 12px;
-            margin: 5px 5px 5px 0;
-            border: 1px solid #00ff41;
-            color: #00ff41;
-            font-size: 0.85em;
-            border-radius: 15px;
         }
 
-        /* --- SKILLS WALL --- */
-        .brick-wall { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-        .brick {
-            background: #111;
-            border: 1px solid #333;
-            color: #ccc;
-            padding: 10px 20px;
-            font-size: 0.9em;
-            transition: 0.2s;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 212, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px var(--border-glow);
+            border-color: var(--primary);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px currentColor);
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            padding: 6px 14px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            background: rgba(0, 255, 136, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(0, 255, 136, 0.15);
+            transform: scale(1.05);
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .skill-category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-item {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
             cursor: default;
         }
-        .brick:hover {
-            background: #00ff41; color: #000; border-color: #00ff41;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+
+        .skill-item:hover {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: var(--primary);
+            transform: scale(1.05);
         }
 
-        /* --- NAV --- */
-        nav {
-            position: fixed; top: 20px; right: 40px; z-index: 100;
-            background: rgba(0,0,0,0.8); padding: 10px 20px;
-            border: 1px solid #333; border-radius: 30px;
-            backdrop-filter: blur(5px);
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 60px 40px;
+            text-align: center;
+            background: rgba(10, 10, 15, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-        nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.9em; transition: 0.3s; }
-        nav a:hover { color: #00ff41; }
 
-        /* --- FOOTER --- */
-        footer { padding: 50px 0; text-align: center; color: #666; font-size: 0.9em; }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                padding: 0 20px;
+            }
+
+            .glitch-text {
+                font-size: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div id="boot-screen">
-        <div id="boot-log"></div>
+    <div class="gradient-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
     </div>
 
-    <canvas id="matrix-bg"></canvas>
-    <div class="cyber-grid"></div>
-
-    <nav>
-        <a href="#terminal">Terminal</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Arsenal</a>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">OP-88<span style="color: var(--primary)">_</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <header id="terminal">
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch-text">Security Engineer</h1>
+            <p class="subtitle">Building <span class="highlight">hardened systems</span> from the byte level up</p>
+            <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary); line-height: 1.8;">
+                I specialize in DevSecOps, systems architecture, and low-level security.
+                From Rust traffic inspectors to enterprise SaaS platforms, I architect solutions that prioritize
+                security without sacrificing performance.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="terminal-demo" class="terminal-section">
         <div class="terminal-window">
             <div class="terminal-header">
-                <div class="terminal-btn btn-r"></div>
-                <div class="terminal-btn btn-y"></div>
-                <div class="terminal-btn btn-g"></div>
-                <span style="margin-left: 10px; color: #666; font-size: 0.8em;">bash — 80x24</span>
+                <div class="terminal-dot dot-red"></div>
+                <div class="terminal-dot dot-yellow"></div>
+                <div class="terminal-dot dot-green"></div>
+                <span style="margin-left: 10px; color: #666; font-size: 0.85rem;">bash — 80x24</span>
             </div>
-            <div class="terminal-content" id="terminal-output">
-                <div class="command-output">
-Welcome to Sentinyl OS v1.0.4
-System Integrity: <span style="color: #00ff41;">SECURE</span>
-User: root@sentinyl
-
-Type 'help' to see available commands.
+            <div class="terminal-content">
+                <div class="output">$ whoami</div>
+                <div class="output" style="color: #fff; margin-bottom: 30px;">
+                    Security Engineer | Systems Architect<br>
+                    Focus: Hardened Infrastructure, Rust, DevSecOps<br>
+                    Location: Building the future of secure systems
                 </div>
-                <div class="input-line">
+                <div class="output">$ ls skills/</div>
+                <div class="output" style="color: #fff;">
+                    Rust Python Docker Neo4j PostgreSQL React FastAPI Linux Redis DevSecOps
+                </div>
+                <div style="display: flex; align-items: center; margin-top: 20px;">
                     <span class="prompt">root@sentinyl:~#</span>
-                    <input type="text" id="cmd-input" autofocus>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">MISSION LOGS</h2>
-            
-            <div class="project-grid">
-                <div class="card-3d">
-                    <h3 style="color: #00ff41; margin-bottom: 10px;">🛡️ SENTINYL ENTERPRISE</h3>
-                    <p style="font-size: 0.9em; margin-bottom: 15px; color: #888;">AI-Powered Digital Risk Protection</p>
-                    <p style="margin-bottom: 20px;">
-                        A Zero-Liability SaaS platform that automates threat reconnaissance. It scans for typosquatting domains and exposed secrets, using a graph database to map attack vectors.
-                    </p>
-                    <div style="margin-bottom: 20px;">
-                        <span class="tech-badge">Python (FastAPI)</span>
-                        <span class="tech-badge">Neo4j</span>
-                        <span class="tech-badge">Docker</span>
-                        <span class="tech-badge">Redis</span>
-                    </div>
-                    <p style="font-size: 0.85em; color: #00bfff;">>> Features: Teams Alerts, MITRE Mapping, Async Scanning.</p>
-                </div>
-
-                <div class="card-3d">
-                    <h3 style="color: #ff5f56; margin-bottom: 10px;">🦀 RUST TRAFFIC INSPECTOR</h3>
-                    <p style="font-size: 0.9em; margin-bottom: 15px; color: #888;">Low-Level Packet Filter</p>
-                    <p style="margin-bottom: 20px;">
-                        A manual implementation of a Layer 7 traffic filter built from scratch in Rust. Intercepts raw TCP streams and filters HTTP packets in user-space without root privileges.
-                    </p>
-                    <div style="margin-bottom: 20px;">
-                        <span class="tech-badge">Rust</span>
-                        <span class="tech-badge">TCP/IP</span>
-                        <span class="tech-badge">Systems Programming</span>
-                    </div>
-                    <p style="font-size: 0.85em; color: #00bfff;">>> Outcome: 1024-byte buffer capture, Manual HTTP Decoding.</p>
-                </div>
-
-                <div class="card-3d">
-                    <h3 style="color: #00bfff; margin-bottom: 10px;">⚡ VERBA</h3>
-                    <p style="font-size: 0.9em; margin-bottom: 15px; color: #888;">Real-Time Audio Transcription</p>
-                    <p style="margin-bottom: 20px;">
-                        Full-stack AI application for real-time audio processing. Implements WebSocket streaming for sub-100ms latency transcription.
-                    </p>
-                    <div style="margin-bottom: 20px;">
-                        <span class="tech-badge">React</span>
-                        <span class="tech-badge">WebSockets</span>
-                        <span class="tech-badge">Node.js</span>
-                    </div>
+                    <span style="color: #fff;">█</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">ARSENAL</h2>
-            <div class="card-3d">
-                <h3 style="color: #00ff41; margin-bottom: 20px;">CORE COMPETENCIES</h3>
-                <div class="brick-wall">
-                    <div class="brick">Rust</div>
-                    <div class="brick">Python</div>
-                    <div class="brick">Docker</div>
-                    <div class="brick">Neo4j</div>
-                    <div class="brick">FastAPI</div>
-                    <div class="brick">React</div>
-                    <div class="brick">Linux (Hardening)</div>
-                    <div class="brick">Git</div>
-                    <div class="brick">PostgreSQL</div>
-                    <div class="brick">DevSecOps</div>
-                    <div class="brick">Redis</div>
-                    <div class="brick">Bash Scripting</div>
+    <section id="projects" class="section">
+        <h2 class="section-title">Featured Projects</h2>
+
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-icon">🛡️</div>
+                <h3 class="project-title">Sentinyl Enterprise</h3>
+                <p class="project-subtitle">AI-Powered Digital Risk Protection</p>
+                <p class="project-description">
+                    Zero-Liability SaaS platform automating threat reconnaissance. Scans for typosquatting domains and
+                    exposed secrets using graph database to map attack vectors in real-time.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">Neo4j</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                </div>
+                <p style="color: var(--secondary); font-size: 0.9rem;">
+                    ✓ MITRE ATT&CK Mapping<br>
+                    ✓ Risk Scoring Engine<br>
+                    ✓ Multi-channel Alerts
+                </p>
+            </div>
+
+            <div class="project-card fade-in" style="animation-delay: 0.2s;">
+                <div class="project-icon" style="color: #ff5f57;">🦀</div>
+                <h3 class="project-title">Rust Traffic Inspector</h3>
+                <p class="project-subtitle">Low-Level Packet Filter</p>
+                <p class="project-description">
+                    Manual implementation of Layer 7 traffic filter built from scratch in Rust. Intercepts raw TCP
+                    streams and filters HTTP packets in user-space without root privileges.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Rust</span>
+                    <span class="tech-tag">TCP/IP</span>
+                    <span class="tech-tag">Systems Programming</span>
+                </div>
+                <p style="color: var(--secondary); font-size: 0.9rem;">
+                    ✓ 1024-byte Buffer Capture<br>
+                    ✓ Manual HTTP Decoding<br>
+                    ✓ Zero Root Access
+                </p>
+            </div>
+
+            <div class="project-card fade-in" style="animation-delay: 0.4s;">
+                <div class="project-icon" style="color: #00d4ff;">⚡</div>
+                <h3 class="project-title">Verba</h3>
+                <p class="project-subtitle">Real-Time Audio Transcription</p>
+                <p class="project-description">
+                    Full-stack AI application for real-time audio processing. Implements WebSocket streaming for
+                    sub-100ms latency transcription with advanced VAD filtering.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">WebSockets</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">AI/ML</span>
+                </div>
+                <p style="color: var(--secondary); font-size: 0.9rem;">
+                    ✓ Sub-100ms Latency<br>
+                    ✓ WebSocket Streaming<br>
+                    ✓ VAD Filtering
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section" style="background: rgba(0, 0, 0, 0.2);">
+        <h2 class="section-title">Technical Arsenal</h2>
+
+        <div class="skills-grid">
+            <div class="skill-category fade-in">
+                <h3 class="skill-category-title">🔧 Languages</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Rust</span>
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">JavaScript/TypeScript</span>
+                    <span class="skill-item">Bash</span>
+                    <span class="skill-item">SQL</span>
+                </div>
+            </div>
+
+            <div class="skill-category fade-in" style="animation-delay: 0.1s;">
+                <h3 class="skill-category-title">🚀 Frameworks & Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-item">FastAPI</span>
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">Git</span>
+                    <span class="skill-item">Linux</span>
+                </div>
+            </div>
+
+            <div class="skill-category fade-in" style="animation-delay: 0.2s;">
+                <h3 class="skill-category-title">💾 Databases</h3>
+                <div class="skill-list">
+                    <span class="skill-item">PostgreSQL</span>
+                    <span class="skill-item">Neo4j</span>
+                    <span class="skill-item">Redis</span>
+                    <span class="skill-item">MongoDB</span>
+                </div>
+            </div>
+
+            <div class="skill-category fade-in" style="animation-delay: 0.3s;">
+                <h3 class="skill-category-title">🔒 Security & DevOps</h3>
+                <div class="skill-list">
+                    <span class="skill-item">DevSecOps</span>
+                    <span class="skill-item">Container Security</span>
+                    <span class="skill-item">Network Analysis</span>
+                    <span class="skill-item">MITRE ATT&CK</span>
+                    <span class="skill-item">CI/CD</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>MARK M. MUNYIRI | SECURITY ENGINEER</p>
-            <p style="font-size: 0.8em; color: #444; margin-top: 10px;">[ PGP KEY AVAILABLE UPON REQUEST ]</p>
+    <footer id="contact">
+        <div class="footer-content">
+            <h3 style="font-size: 2rem; margin-bottom: 20px;">Let's Build Something Secure</h3>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px;">
+                Open to collaborations on security-focused projects, DevSecOps consulting, and systems architecture.
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/OP-88" class="social-link" title="GitHub">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+                <a href="https://linkedin.com" class="social-link" title="LinkedIn">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                </a>
+                <a href="mailto:contact@op88.dev" class="social-link" title="Email">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-text">
+                OP-88 | Security Engineer & Systems Architect<br>
+                <span style="font-size: 0.8rem; color: #444;">[ PGP KEY AVAILABLE UPON REQUEST ]</span>
+            </p>
         </div>
     </footer>
 
     <script>
-        // --- 1. BOOT SEQUENCE ---
-        const bootLogs = [
-            "Initializing kernel...",
-            "Mounting root filesystem (read-only)... [OK]",
-            "Loading security modules... [OK]",
-            "Connecting to Sentinel Network...",
-            "Established secure connection.",
-            "Starting visual interface..."
-        ];
-        
-        const bootScreen = document.getElementById('boot-screen');
-        const bootLogDiv = document.getElementById('boot-log');
-        
-        let delay = 0;
-        bootLogs.forEach((log, index) => {
-            delay += Math.floor(Math.random() * 300) + 100;
-            setTimeout(() => {
-                const p = document.createElement('div');
-                p.className = 'log-entry';
-                p.innerHTML = `<span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> ${log}`;
-                bootLogDiv.appendChild(p);
-                
-                if (index === bootLogs.length - 1) {
-                    setTimeout(() => {
-                        bootScreen.style.opacity = '0';
-                        setTimeout(() => bootScreen.classList.add('hidden'), 500);
-                    }, 800);
-                }
-            }, delay);
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
 
-        // --- 2. TERMINAL LOGIC ---
-        const input = document.getElementById('cmd-input');
-        const output = document.getElementById('terminal-output');
-        const prompt = "root@sentinyl:~# ";
-
-        input.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const cmd = this.value.trim().toLowerCase();
-                const oldInput = document.createElement('div');
-                oldInput.innerHTML = `<span class="prompt">${prompt}</span>${this.value}`;
-                oldInput.style.marginBottom = '10px';
-                
-                // Insert before the input line
-                output.insertBefore(oldInput, document.querySelector('.input-line'));
-                
-                let response = "";
-                
-                // COMMANDS
-                switch(cmd) {
-                    case 'help':
-                        response = "Available commands:\n  whoami    - Display user profile\n  ls        - List sections\n  cat [arg] - View content (try 'cat projects')\n  clear     - Clear terminal";
-                        break;
-                    case 'whoami':
-                        response = "Mark M. Munyiri\nSecurity Engineer & Systems Architect.\nFocus: Hardened Systems, Rust, DevSecOps.";
-                        break;
-                    case 'ls':
-                        response = "about/  projects/  arsenal/  contact.txt";
-                        break;
-                    case 'cat projects':
-                        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-                        response = "Navigating to Mission Logs...";
-                        break;
-                    case 'cat about':
-                        response = "I build hardened systems from the byte level up.";
-                        break;
-                    case 'clear':
-                        // Remove all previous output divs
-                        document.querySelectorAll('#terminal-output > div:not(.input-line)').forEach(el => el.remove());
-                        this.value = '';
-                        return; // Exit early
-                    default:
-                        if (cmd !== "") response = `Command not found: ${cmd}. Type 'help'.`;
-                }
-
-                if (response) {
-                    const respDiv = document.createElement('div');
-                    respDiv.className = 'command-output';
-                    respDiv.innerText = response;
-                    output.insertBefore(respDiv, document.querySelector('.input-line'));
-                }
-
-                this.value = '';
-                // Keep scroll at bottom
-                output.scrollTop = output.scrollHeight;
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
         });
 
-        // Focus input on click anywhere in terminal
-        document.querySelector('.terminal-window').addEventListener('click', () => input.focus());
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        // --- 3. MATRIX BACKGROUND (Optimized) ---
-        const canvas = document.getElementById('matrix-bg');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const chars = '01';
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(13, 13, 13, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#00ff41';
-            ctx.font = fontSize + 'px monospace';
-            
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(drawMatrix, 50);
-        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
+
 </html>
