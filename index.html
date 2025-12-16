@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OP-88 | Security Engineer</title>
+    <title>Mark M. Munyiri | Security Architect & Systems Engineer</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
@@ -13,7 +13,7 @@
             --primary: #00ff88;
             --secondary: #00d4ff;
             --accent: #ff006e;
-            --bg-dark: #0a0a0f;
+            --bg-dark: #050505;
             --bg-card: rgba(20, 20, 30, 0.7);
             --text-primary: #e6edf3;
             --text-secondary: #8b95a3;
@@ -34,7 +34,30 @@
             overflow-x: hidden;
         }
 
-        /* ===== ANIMATED GRADIENT BACKGROUND ===== */
+        /* ===== CYBER GRID BACKGROUND ===== */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 255, 136, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: perspective(500px) rotateX(60deg) translateY(0);
+            }
+
+            100% {
+                transform: perspective(500px) rotateX(60deg) translateY(50px);
+            }
+        }
+
         .gradient-bg {
             position: fixed;
             top: 0;
@@ -42,14 +65,14 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 50%, #0a0a0f 100%);
+            background: linear-gradient(135deg, #050505 0%, #0f0f1e 50%, #050505 100%);
         }
 
         .gradient-orb {
             position: absolute;
             border-radius: 50%;
             filter: blur(100px);
-            opacity: 0.15;
+            opacity: 0.1;
             animation: float 20s ease-in-out infinite;
         }
 
@@ -71,15 +94,6 @@
             animation-delay: 5s;
         }
 
-        .orb-3 {
-            bottom: 10%;
-            left: 50%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-            animation-delay: 10s;
-        }
-
         @keyframes float {
 
             0%,
@@ -99,72 +113,31 @@
         /* ===== NAVIGATION ===== */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 20px 0;
-            backdrop-filter: blur(20px) saturate(180%);
-            background: rgba(10, 10, 15, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            top: 20px;
+            right: 40px;
             z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 20px;
         }
 
-        .logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
+        nav a {
             color: var(--text-secondary);
             text-decoration: none;
+            font-size: 0.9em;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
+        nav a:hover {
             color: var(--primary);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            text-shadow: 0 0 8px var(--primary);
         }
 
         /* ===== HERO SECTION ===== */
@@ -183,23 +156,29 @@
             animation: fadeInUp 1s ease-out;
         }
 
-        .glitch-text {
-            font-size: clamp(3rem, 8vw, 6rem);
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #fff, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            position: relative;
-            display: inline-block;
         }
 
-        .subtitle {
-            font-size: 1.5rem;
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
             color: var(--text-secondary);
             margin-bottom: 30px;
             font-weight: 300;
+        }
+
+        .hero-bio {
+            max-width: 750px;
+            margin: 0 auto 40px;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.05rem;
         }
 
         .highlight {
@@ -221,8 +200,6 @@
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-primary {
@@ -255,27 +232,37 @@
         }
 
         .terminal-window {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            background: rgba(13, 17, 23, 0.9);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px var(--border-glow);
             backdrop-filter: blur(20px);
             transition: all 0.3s ease;
+            animation: terminalFloat 6s ease-in-out infinite;
         }
 
-        .terminal-window:hover {
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px var(--border-glow);
-            transform: translateY(-5px);
+        @keyframes terminalFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px var(--border-glow);
+            }
+
+            50% {
+                transform: translateY(-10px);
+                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px var(--border-glow);
+            }
         }
 
         .terminal-header {
-            background: rgba(30, 30, 40, 0.9);
+            background: linear-gradient(90deg, #1a1a1a, #0d0d0d);
             padding: 12px 20px;
             display: flex;
             align-items: center;
             gap: 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid #333;
         }
 
         .terminal-dot {
@@ -301,16 +288,35 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 1rem;
             line-height: 1.8;
+            min-height: 400px;
         }
 
         .prompt {
             color: var(--primary);
             margin-right: 10px;
+            font-weight: bold;
         }
 
         .output {
             color: var(--text-secondary);
             margin-bottom: 20px;
+            white-space: pre-wrap;
+        }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+        }
+
+        input#cmd-input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-family: inherit;
+            font-size: inherit;
+            width: 100%;
+            outline: none;
+            caret-color: var(--primary);
         }
 
         /* ===== PROJECTS SECTION ===== */
@@ -326,6 +332,7 @@
             font-weight: 700;
             position: relative;
             display: inline-block;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
         }
 
         .section-title::after {
@@ -335,7 +342,7 @@
             bottom: -10px;
             width: 60%;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--primary), transparent);
             border-radius: 2px;
         }
 
@@ -347,36 +354,21 @@
         }
 
         .project-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-left: 3px solid var(--primary);
+            border-radius: 15px;
             padding: 40px;
-            backdrop-filter: blur(20px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 212, 255, 0.05));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px var(--border-glow);
             border-color: var(--primary);
+            background: rgba(20, 20, 20, 0.8);
         }
 
         .project-icon {
@@ -388,16 +380,13 @@
         .project-title {
             font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 10px;
+            color: var(--primary);
         }
 
         .project-subtitle {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -407,6 +396,7 @@
             color: var(--text-secondary);
             margin-bottom: 25px;
             line-height: 1.7;
+            font-size: 0.95rem;
         }
 
         .tech-tags {
@@ -417,7 +407,7 @@
         }
 
         .tech-tag {
-            padding: 6px 14px;
+            padding: 6px 15px;
             border: 1px solid rgba(0, 255, 136, 0.3);
             border-radius: 20px;
             font-size: 0.85rem;
@@ -431,101 +421,81 @@
             transform: scale(1.05);
         }
 
+        .project-status {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            border-top: 1px dashed #333;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
         /* ===== SKILLS SECTION ===== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+        .skills-container {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-left: 3px solid var(--secondary);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
             margin-top: 60px;
         }
 
-        .skill-category {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 30px;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
+        .skills-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
         }
 
-        .skill-category:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .skill-category-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .skill-list {
+        .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
 
         .skill-item {
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            padding: 12px 25px;
+            background: #111;
+            border: 1px solid #333;
+            border-left: 3px solid #333;
+            color: #ccc;
+            font-size: 1em;
+            transition: 0.3s;
             cursor: default;
+            position: relative;
         }
 
         .skill-item:hover {
-            background: rgba(0, 255, 136, 0.1);
+            transform: translateY(-5px);
+            background: var(--primary);
+            color: #000;
             border-color: var(--primary);
-            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
         }
 
         /* ===== FOOTER ===== */
         footer {
-            padding: 60px 40px;
+            padding: 80px 40px;
             text-align: center;
             background: rgba(10, 10, 15, 0.95);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            border-color: var(--primary);
+        .footer-status {
             color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
-        .footer-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .footer-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-pgp {
+            font-size: 0.8em;
+            color: #444;
+            margin-top: 15px;
         }
 
         /* ===== ANIMATIONS ===== */
@@ -541,32 +511,32 @@
             }
         }
 
-        .fade-in {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            nav {
+                top: auto;
+                bottom: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                width: 90%;
+                justify-content: center;
             }
 
             .hero-content {
                 padding: 0 20px;
             }
 
-            .glitch-text {
-                font-size: 3rem;
-            }
-
             .cta-buttons {
                 flex-direction: column;
             }
 
-            .projects-grid,
-            .skills-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .terminal-content {
+                min-height: 300px;
+                padding: 20px;
             }
         }
     </style>
@@ -576,33 +546,31 @@
     <div class="gradient-bg">
         <div class="gradient-orb orb-1"></div>
         <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
     </div>
+    <div class="cyber-grid"></div>
 
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">OP-88<span style="color: var(--primary)">_</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+    <nav>
+        <a href="#home">TERMINAL</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#arsenal">ARSENAL</a>
     </nav>
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="glitch-text">Security Engineer</h1>
-            <p class="subtitle">Building <span class="highlight">hardened systems</span> from the byte level up</p>
-            <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary); line-height: 1.8;">
-                I specialize in DevSecOps, systems architecture, and low-level security.
-                From Rust traffic inspectors to enterprise SaaS platforms, I architect solutions that prioritize
-                security without sacrificing performance.
+            <h1 class="hero-title">Security Architect & Systems Engineer</h1>
+            <p class="hero-subtitle">Building <span class="highlight">hardened systems</span> from the byte level up</p>
+            <p class="hero-bio">
+                I don't just write code—I architect hardened, production-ready systems from the byte level up.
+                By leveraging AI to accelerate my mastery of low-level protocols, I've bridged the gap between web
+                development and systems engineering,
+                building everything from user-space packet filters in Rust to enterprise SaaS platforms with
+                defense-in-depth security.
+                <strong style="color: var(--primary);">My work focuses on creating systems where security isn't a
+                    feature—it's the foundation.</strong>
             </p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                <a href="https://github.com/OP-88" class="btn btn-secondary">GitHub Profile</a>
             </div>
         </div>
     </section>
@@ -613,81 +581,98 @@
                 <div class="terminal-dot dot-red"></div>
                 <div class="terminal-dot dot-yellow"></div>
                 <div class="terminal-dot dot-green"></div>
-                <span style="margin-left: 10px; color: #666; font-size: 0.85rem;">bash — 80x24</span>
+                <span style="margin-left: 10px; color: #888; font-size: 0.85rem;">bash — root@sentinyl:~ (zsh)</span>
             </div>
-            <div class="terminal-content">
+            <div class="terminal-content" id="terminal-output">
                 <div class="output">$ whoami</div>
-                <div class="output" style="color: #fff; margin-bottom: 30px;">
-                    Security Engineer | Systems Architect<br>
-                    Focus: Hardened Infrastructure, Rust, DevSecOps<br>
-                    Location: Building the future of secure systems
-                </div>
-                <div class="output">$ ls skills/</div>
                 <div class="output" style="color: #fff;">
-                    Rust Python Docker Neo4j PostgreSQL React FastAPI Linux Redis DevSecOps
+                    Mark M. Munyiri
+                    Role: Security Architect & Systems Engineer
+                    Mission: Building hardened, production-ready systems
+
+                    Focus: DevSecOps | Container Security | Systems Programming | Threat Intelligence
                 </div>
-                <div style="display: flex; align-items: center; margin-top: 20px;">
+                <div class="output">$ ls projects/</div>
+                <div class="output" style="color: var(--primary);">
+                    sentinyl-enterprise/ rust-traffic-inspector/ verba-ai/ arsenal.txt
+                </div>
+                <div class="output">$ cat arsenal.txt</div>
+                <div class="output" style="color: #fff;">
+                    Rust Python Docker Neo4j FastAPI PostgreSQL React Linux Redis DevSecOps MITRE-ATT&CK
+                </div>
+                <div class="input-line">
                     <span class="prompt">root@sentinyl:~#</span>
-                    <span style="color: #fff;">█</span>
+                    <input type="text" id="cmd-input" autofocus placeholder="Type 'help' for commands">
                 </div>
             </div>
         </div>
     </section>
 
     <section id="projects" class="section">
-        <h2 class="section-title">Featured Projects</h2>
+        <h2 class="section-title">MISSION LOGS</h2>
 
         <div class="projects-grid">
-            <div class="project-card fade-in">
+            <div class="project-card">
                 <div class="project-icon">🛡️</div>
-                <h3 class="project-title">Sentinyl Enterprise</h3>
-                <p class="project-subtitle">AI-Powered Digital Risk Protection</p>
+                <h3 class="project-title">SENTINYL ENTERPRISE</h3>
+                <p class="project-subtitle">Lead Security Architect | Zero-Liability DRP SaaS</p>
                 <p class="project-description">
-                    Zero-Liability SaaS platform automating threat reconnaissance. Scans for typosquatting domains and
-                    exposed secrets using graph database to map attack vectors in real-time.
+                    Architected an enterprise-grade microservices platform with defense-in-depth security achieving 75%
+                    attack surface reduction.
+                    Built Neo4j-powered graph database to map complex threat relationships, risk scoring engine with
+                    MITRE ATT&CK integration,
+                    and Stripe-based usage billing with automatic quota enforcement.
                 </p>
                 <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">Python (FastAPI)</span>
                     <span class="tech-tag">Neo4j</span>
                     <span class="tech-tag">Docker</span>
-                    <span class="tech-tag">Redis</span>
                     <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">Stripe</span>
                 </div>
-                <p style="color: var(--secondary); font-size: 0.9rem;">
+                <div class="project-status">
+                    ✓ Network Isolation (CIS/NIST Compliant)<br>
+                    ✓ Read-Only Containers<br>
                     ✓ MITRE ATT&CK Mapping<br>
-                    ✓ Risk Scoring Engine<br>
-                    ✓ Multi-channel Alerts
-                </p>
+                    >> STATUS: DEPLOYED (Private Beta)
+                </div>
             </div>
 
-            <div class="project-card fade-in" style="animation-delay: 0.2s;">
+            <div class="project-card">
                 <div class="project-icon" style="color: #ff5f57;">🦀</div>
-                <h3 class="project-title">Rust Traffic Inspector</h3>
-                <p class="project-subtitle">Low-Level Packet Filter</p>
+                <h3 class="project-title">RUST TRAFFIC INSPECTOR</h3>
+                <p class="project-subtitle">Systems Engineer | Low-Level Network Security</p>
                 <p class="project-description">
-                    Manual implementation of Layer 7 traffic filter built from scratch in Rust. Intercepts raw TCP
-                    streams and filters HTTP packets in user-space without root privileges.
+                    Engineered a user-space network traffic filter from first principles, bypassing kernel requirements
+                    through Layer 7 architecture.
+                    Manually captured raw TCP byte streams into 1024-byte stack buffer with zero-dependency HTTP
+                    parsing,
+                    proving security controls don't require root access with deep protocol understanding.
                 </p>
                 <div class="tech-tags">
                     <span class="tech-tag">Rust</span>
                     <span class="tech-tag">TCP/IP</span>
                     <span class="tech-tag">Systems Programming</span>
+                    <span class="tech-tag">std::net</span>
                 </div>
-                <p style="color: var(--secondary); font-size: 0.9rem;">
-                    ✓ 1024-byte Buffer Capture<br>
-                    ✓ Manual HTTP Decoding<br>
-                    ✓ Zero Root Access
-                </p>
+                <div class="project-status">
+                    ✓ Zero Dependencies<br>
+                    ✓ User-Space Filtering<br>
+                    ✓ Sub-Millisecond Latency<br>
+                    >> STATUS: OPEN SOURCE
+                </div>
             </div>
 
-            <div class="project-card fade-in" style="animation-delay: 0.4s;">
-                <div class="project-icon" style="color: #00d4ff;">⚡</div>
-                <h3 class="project-title">Verba</h3>
-                <p class="project-subtitle">Real-Time Audio Transcription</p>
+            <div class="project-card">
+                <div class="project-icon" style="color: #00d4ff;">🎤</div>
+                <h3 class="project-title">VERBA</h3>
+                <p class="project-subtitle">Full Stack Developer | Real-Time Audio AI</p>
                 <p class="project-description">
-                    Full-stack AI application for real-time audio processing. Implements WebSocket streaming for
-                    sub-100ms latency transcription with advanced VAD filtering.
+                    Architected a WebSocket streaming pipeline achieving sub-100ms audio processing latency through
+                    careful protocol design.
+                    Implemented VAD filtering, reducing unnecessary API calls by 60%, with React frontend featuring
+                    real-time visualization.
                 </p>
                 <div class="tech-tags">
                     <span class="tech-tag">React</span>
@@ -695,98 +680,107 @@
                     <span class="tech-tag">Node.js</span>
                     <span class="tech-tag">AI/ML</span>
                 </div>
-                <p style="color: var(--secondary); font-size: 0.9rem;">
+                <div class="project-status">
                     ✓ Sub-100ms Latency<br>
-                    ✓ WebSocket Streaming<br>
-                    ✓ VAD Filtering
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="section" style="background: rgba(0, 0, 0, 0.2);">
-        <h2 class="section-title">Technical Arsenal</h2>
-
-        <div class="skills-grid">
-            <div class="skill-category fade-in">
-                <h3 class="skill-category-title">🔧 Languages</h3>
-                <div class="skill-list">
-                    <span class="skill-item">Rust</span>
-                    <span class="skill-item">Python</span>
-                    <span class="skill-item">JavaScript/TypeScript</span>
-                    <span class="skill-item">Bash</span>
-                    <span class="skill-item">SQL</span>
-                </div>
-            </div>
-
-            <div class="skill-category fade-in" style="animation-delay: 0.1s;">
-                <h3 class="skill-category-title">🚀 Frameworks & Tools</h3>
-                <div class="skill-list">
-                    <span class="skill-item">FastAPI</span>
-                    <span class="skill-item">React</span>
-                    <span class="skill-item">Docker</span>
-                    <span class="skill-item">Git</span>
-                    <span class="skill-item">Linux</span>
-                </div>
-            </div>
-
-            <div class="skill-category fade-in" style="animation-delay: 0.2s;">
-                <h3 class="skill-category-title">💾 Databases</h3>
-                <div class="skill-list">
-                    <span class="skill-item">PostgreSQL</span>
-                    <span class="skill-item">Neo4j</span>
-                    <span class="skill-item">Redis</span>
-                    <span class="skill-item">MongoDB</span>
-                </div>
-            </div>
-
-            <div class="skill-category fade-in" style="animation-delay: 0.3s;">
-                <h3 class="skill-category-title">🔒 Security & DevOps</h3>
-                <div class="skill-list">
-                    <span class="skill-item">DevSecOps</span>
-                    <span class="skill-item">Container Security</span>
-                    <span class="skill-item">Network Analysis</span>
-                    <span class="skill-item">MITRE ATT&CK</span>
-                    <span class="skill-item">CI/CD</span>
+                    ✓ Real-Time Processing<br>
+                    >> STATUS: COMPLETED
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <h3 style="font-size: 2rem; margin-bottom: 20px;">Let's Build Something Secure</h3>
-            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px;">
-                Open to collaborations on security-focused projects, DevSecOps consulting, and systems architecture.
-            </p>
-            <div class="social-links">
-                <a href="https://github.com/OP-88" class="social-link" title="GitHub">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                </a>
-                <a href="https://linkedin.com" class="social-link" title="LinkedIn">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
-                </a>
-                <a href="mailto:contact@op88.dev" class="social-link" title="Email">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                    </svg>
-                </a>
+    <section id="arsenal" class="section">
+        <h2 class="section-title">ARSENAL</h2>
+
+        <div class="skills-container">
+            <h3 class="skills-title">CORE COMPETENCIES</h3>
+            <div class="skills-grid">
+                <div class="skill-item">Rust (Systems)</div>
+                <div class="skill-item">Python (Advanced)</div>
+                <div class="skill-item">Docker (Hardening)</div>
+                <div class="skill-item">Neo4j (Graph DB)</div>
+                <div class="skill-item">FastAPI</div>
+                <div class="skill-item">React / TypeScript</div>
+                <div class="skill-item">Linux SysAdmin</div>
+                <div class="skill-item">DevSecOps</div>
+                <div class="skill-item">Git / CI/CD</div>
+                <div class="skill-item">PostgreSQL</div>
+                <div class="skill-item">Redis</div>
+                <div class="skill-item">MITRE ATT&CK</div>
+                <div class="skill-item">Container Security</div>
+                <div class="skill-item">Network Protocols</div>
+                <div class="skill-item">Bash Scripting</div>
             </div>
-            <p class="footer-text">
-                OP-88 | Security Engineer & Systems Architect<br>
-                <span style="font-size: 0.8rem; color: #444;">[ PGP KEY AVAILABLE UPON REQUEST ]</span>
-            </p>
         </div>
+    </section>
+
+    <footer>
+        <div class="footer-status">⚡ SYSTEM READY FOR DEPLOYMENT ⚡</div>
+        <p class="footer-name">MARK M. MUNYIRI | SECURITY ARCHITECT & SYSTEMS ENGINEER</p>
+        <p style="color: var(--text-secondary); margin-top: 10px;">Security through architecture, not configuration</p>
+        <p class="footer-pgp">[ PGP KEY AVAILABLE UPON REQUEST ]</p>
     </footer>
 
     <script>
+        // Terminal interaction
+        const input = document.getElementById('cmd-input');
+        const output = document.getElementById('terminal-output');
+        const prompt = "root@sentinyl:~# ";
+
+        input.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const cmd = this.value.trim().toLowerCase();
+
+                const historyLine = document.createElement('div');
+                historyLine.innerHTML = `<span class="prompt">${prompt}</span>${this.value}`;
+                historyLine.style.marginBottom = '10px';
+                output.insertBefore(historyLine, document.querySelector('.input-line'));
+
+                let response = "";
+
+                switch (cmd) {
+                    case 'help':
+                        response = "Available commands:\n  whoami    - Display profile\n  ls        - List projects\n  cat [arg] - View details\n  clear     - Clear terminal";
+                        break;
+                    case 'whoami':
+                        response = "Mark M. Munyiri\nSecurity Architect & Systems Engineer\nSpecialization: Hardened Infrastructure, Low-Level Security, DevSecOps";
+                        break;
+                    case 'ls':
+                    case 'ls projects':
+                        response = "<span style='color: var(--primary)'>sentinyl-enterprise/</span>  <span style='color: var(--primary)'>rust-traffic-inspector/</span>  <span style='color: var(--primary)'>verba-ai/</span>  arsenal.txt";
+                        break;
+                    case 'cat sentinyl':
+                    case 'cat sentinyl-enterprise':
+                        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+                        response = "Navigating to Sentinyl Enterprise...";
+                        break;
+                    case 'cat arsenal':
+                    case 'cat arsenal.txt':
+                        document.getElementById('arsenal').scrollIntoView({ behavior: 'smooth' });
+                        response = "Navigating to Arsenal...";
+                        break;
+                    case 'clear':
+                        document.querySelectorAll('#terminal-output > div:not(.input-line)').forEach(el => el.remove());
+                        this.value = '';
+                        return;
+                    default:
+                        if (cmd !== "") response = `Command not found: ${cmd}. Type 'help'.`;
+                }
+
+                if (response) {
+                    const respDiv = document.createElement('div');
+                    respDiv.className = 'output';
+                    respDiv.innerHTML = response;
+                    output.insertBefore(respDiv, document.querySelector('.input-line'));
+                }
+
+                this.value = '';
+                output.scrollTop = output.scrollHeight;
+            }
+        });
+
+        document.querySelector('.terminal-window').addEventListener('click', () => input.focus());
+
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -795,35 +789,6 @@
                     behavior: 'smooth'
                 });
             });
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
         });
     </script>
 </body>
