@@ -682,23 +682,22 @@
             </div>
 
             <div class="project-card fade-in" style="animation-delay: 0.4s;">
-                <div class="project-icon" style="color: #00d4ff;">⚡</div>
-                <h3 class="project-title">Verba</h3>
-                <p class="project-subtitle">Real-Time Audio Transcription</p>
+                <div class="project-icon" style="color: #E95420;">📸</div>
+                <h3 class="project-title">Capture</h3>
+                <p class="project-subtitle">Forensic-Grade Screenshot Tool</p>
                 <p class="project-description">
-                    Full-stack AI application for real-time audio processing. Implements WebSocket streaming for
-                    sub-100ms latency transcription with advanced VAD filtering.
+                    Local-first desktop application engineered for security professionals. Features granular image quality adjustments, automatic PII redaction (API keys, IPs) via regex/OCR, and strict chain-of-custody tracking.
                 </p>
                 <div class="tech-tags">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">WebSockets</span>
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">AI/ML</span>
+                    <span class="tech-tag">Python Executable</span>
+                    <span class="tech-tag">PyQt6</span>
+                    <span class="tech-tag">Tesseract OCR</span>
+                    <span class="tech-tag">SQLite</span>
                 </div>
                 <p style="color: var(--secondary); font-size: 0.9rem;">
-                    ✓ Sub-100ms Latency<br>
-                    ✓ WebSocket Streaming<br>
-                    ✓ VAD Filtering
+                    ✓ Zero Cloud Dependencies<br>
+                    ✓ Local PII Sanitization<br>
+                    ✓ Chains of Custody logs
                 </p>
             </div>
         </div>
