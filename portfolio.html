@@ -639,6 +639,26 @@
 
         <div class="projects-grid">
             <div class="project-card fade-in">
+                <div class="project-icon" style="color: #E95420;">📸</div>
+                <h3 class="project-title">Capture</h3>
+                <p class="project-subtitle">Forensic-Grade Screenshot Tool</p>
+                <p class="project-description">
+                    Local-first desktop application engineered for security professionals. Features granular image quality adjustments, automatic PII redaction (API keys, IPs) via regex/OCR, and strict chain-of-custody tracking.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python Executable</span>
+                    <span class="tech-tag">PyQt6</span>
+                    <span class="tech-tag">Tesseract OCR</span>
+                    <span class="tech-tag">SQLite</span>
+                </div>
+                <p style="color: var(--secondary); font-size: 0.9rem;">
+                    ✓ Zero Cloud Dependencies<br>
+                    ✓ Local PII Sanitization<br>
+                    ✓ Chains of Custody logs
+                </p>
+            </div>
+
+            <div class="project-card fade-in" style="animation-delay: 0.2s;">
                 <div class="project-icon">🛡️</div>
                 <h3 class="project-title">Sentinyl Enterprise</h3>
                 <p class="project-subtitle">AI-Powered Digital Risk Protection</p>
@@ -661,7 +681,7 @@
                 </p>
             </div>
 
-            <div class="project-card fade-in" style="animation-delay: 0.2s;">
+            <div class="project-card fade-in" style="animation-delay: 0.4s;">
                 <div class="project-icon" style="color: #ff5f57;">🦀</div>
                 <h3 class="project-title">Rust Traffic Inspector</h3>
                 <p class="project-subtitle">Low-Level Packet Filter</p>
@@ -678,26 +698,6 @@
                     ✓ 1024-byte Buffer Capture<br>
                     ✓ Manual HTTP Decoding<br>
                     ✓ Zero Root Access
-                </p>
-            </div>
-
-            <div class="project-card fade-in" style="animation-delay: 0.4s;">
-                <div class="project-icon" style="color: #E95420;">📸</div>
-                <h3 class="project-title">Capture</h3>
-                <p class="project-subtitle">Forensic-Grade Screenshot Tool</p>
-                <p class="project-description">
-                    Local-first desktop application engineered for security professionals. Features granular image quality adjustments, automatic PII redaction (API keys, IPs) via regex/OCR, and strict chain-of-custody tracking.
-                </p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Python Executable</span>
-                    <span class="tech-tag">PyQt6</span>
-                    <span class="tech-tag">Tesseract OCR</span>
-                    <span class="tech-tag">SQLite</span>
-                </div>
-                <p style="color: var(--secondary); font-size: 0.9rem;">
-                    ✓ Zero Cloud Dependencies<br>
-                    ✓ Local PII Sanitization<br>
-                    ✓ Chains of Custody logs
                 </p>
             </div>
         </div>
