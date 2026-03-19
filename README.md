@@ -639,7 +639,7 @@
 
         <div class="projects-grid">
             <div class="project-card fade-in">
-                <div class="project-icon" style="color: #E95420;">📸</div>
+
                 <h3 class="project-title">Capture</h3>
                 <p class="project-subtitle">Forensic-Grade Screenshot Tool</p>
                 <p class="project-description">
@@ -659,7 +659,7 @@
             </div>
 
             <div class="project-card fade-in" style="animation-delay: 0.2s;">
-                <div class="project-icon">🛡️</div>
+
                 <h3 class="project-title">Sentinyl Enterprise</h3>
                 <p class="project-subtitle">AI-Powered Digital Risk Protection</p>
                 <p class="project-description">
@@ -682,7 +682,7 @@
             </div>
 
             <div class="project-card fade-in" style="animation-delay: 0.4s;">
-                <div class="project-icon" style="color: #ff5f57;">🦀</div>
+
                 <h3 class="project-title">Rust Traffic Inspector</h3>
                 <p class="project-subtitle">Low-Level Packet Filter</p>
                 <p class="project-description">
