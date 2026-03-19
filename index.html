@@ -672,7 +672,7 @@
                 </div>
                 <div class="output">$ ls projects/</div>
                 <div class="output" style="color: var(--primary);">
-                    sentinyl-enterprise/ rust-traffic-inspector/ verba-ai/ arsenal.txt
+                    sentinyl-enterprise/ rust-traffic-inspector/ capture-v2/ arsenal.txt
                 </div>
                 <div class="output">$ cat arsenal.txt</div>
                 <div class="output" style="color: #fff;">
@@ -814,25 +814,22 @@
             </div>
 
             <div class="project-card">
-                <div class="project-icon" style="color: #00d4ff;">🎤</div>
-                <h3 class="project-title">VERBA</h3>
-                <p class="project-subtitle">Real-Time Audio Transcription Platform</p>
+                <div class="project-icon" style="color: #E95420;">📸</div>
+                <h3 class="project-title">CAPTURE</h3>
+                <p class="project-subtitle">Forensic-Grade Screenshot Tool</p>
                 <p class="project-description">
-                    Architected WebSocket streaming pipeline for real-time audio transcription, solving the latency
-                    problem inherent in REST APIs.
-                    Achieved sub-100ms processing latency through async event handling, demonstrating mastery of full
-                    SDLC and real-time systems architecture.
+                    Local-first desktop application engineered for security professionals. Features granular image quality adjustments, automatic PII redaction (API keys, IPs) via regex/OCR, and strict chain-of-custody tracking.
                 </p>
                 <div class="tech-tags">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">WebSockets</span>
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">AI/ML</span>
+                    <span class="tech-tag">Python Executable</span>
+                    <span class="tech-tag">PyQt6</span>
+                    <span class="tech-tag">Tesseract OCR</span>
+                    <span class="tech-tag">SQLite</span>
                 </div>
                 <div class="project-status">
-                    ✓ Sub-100ms Latency<br>
-                    ✓ Real-Time Processing<br>
-                    >> STATUS: COMPLETED
+                    ✓ Zero Cloud Dependencies<br>
+                    ✓ Local PII Sanitization<br>
+                    >> STATUS: RELEASED (v2.0)
                 </div>
             </div>
         </div>
@@ -928,7 +925,7 @@
                         break;
                     case 'ls':
                     case 'ls projects':
-                        response = "<span style='color: var(--primary)'>sentinyl-enterprise/</span>  <span style='color: var(--primary)'>rust-traffic-inspector/</span>  <span style='color: var(--primary)'>verba-ai/</span>  arsenal.txt";
+                        response = "<span style='color: var(--primary)'>sentinyl-enterprise/</span>  <span style='color: var(--primary)'>rust-traffic-inspector/</span>  <span style='color: var(--primary)'>capture-v2/</span>  arsenal.txt";
                         break;
                     case 'cat sentinyl':
                     case 'cat sentinyl-enterprise':
